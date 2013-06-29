@@ -6,6 +6,7 @@ Summary:        X Resource Monitor
 Url:            http://www.freedesktop.org/Software/xrestop
 Group:          Development/Tools
 Source0:        %{name}-%{version}.tar.gz
+Source1001: 	xrestop.manifest
 
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(x11)
@@ -20,6 +21,7 @@ for tracking down application X resource usage leaks.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %reconfigure
@@ -32,6 +34,7 @@ make %{?_smp_mflags}
 %remove_docs
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %license  COPYING
 %{_bindir}/xrestop
