@@ -1,3 +1,5 @@
+%bcond_with x
+
 Name:           xrestop
 Version:        0.4
 Release:        0
@@ -13,6 +15,10 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xres)
+
+%if !%{with x}
+ExclusiveArch:
+%endif
 
 %description
 A utility to monitor application usage of X resources in the X Server, and
